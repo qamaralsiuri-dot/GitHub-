@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QAMAR KHALED · PORTFOLIO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-main: 'Tajawal', sans-serif;
+      --bg-site: #0b0b0c;
+      --text-main: #f9f8f4;
+      --accent-pink: #f5c2d7; 
+      --accent-gray: #b3b5b8; 
+      --card-bg: #141416;
+      --border-color: rgba(245, 194, 215, 0.28);
+    }
+
+    [data-theme="light"] {
+      --bg-site: #f8f7f9;
+      --text-main: #121212;
+      --accent-pink: #e8a7c2;
+      --accent-gray: #7a7c80;
+      --card-bg: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-site);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      width: 12px;
+      height: 12px;
+      background: var(--accent-pink);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px var(--accent-pink);
+    }
+
+    .cursor-follower {
+      width: 42px; height: 42px;
+      border: 2px solid var(--accent-pink);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out;
+    }
+
+    /* Header Navigation */
+    header {
+      background: rgba(11, 11, 12, 0.95);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    [data-theme="light"] header {
+      background: rgba(248, 247, 249, 0.95);
+    }
+
+    .nav-container {
+      width: 100%;
+      max-width: 1980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 1.15rem;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-pink);
+      text-shadow: 0 0 10px rgba(245, 194, 215, 0.5);
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      height: 120px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 15px rgba(245, 194, 215, 0.45));
+    }
+
+    .theme-toggle-btn {
+      background: var(--card-bg);
+      color: var(--text-main);
+      border: 1.5px solid var(--accent-pink);
+      padding: 0.6rem 1.3rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--accent-pink);
+      color: #121212;
+    }
+
+    /* Hero Fullscreen */
+    .hero-fullscreen {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.42);
+      z-index: 1;
+    }
+
+    .hero-content-overlay {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      padding: 0 2rem;
+    }
+
+    .hero-tag-top {
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--accent-pink);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .hero-content-overlay h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle-text {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--accent-pink);
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 3rem;
+      font-weight: 900;
+      text-align: center;
+      margin: 5rem 0 3.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent-pink);
+      margin: 0.9rem auto 0;
+      border-radius: 3px;
+    }
+
+    /* تكبير العرض ليملأ الشاشة وتخفيف المساحات البيضاء على الأطراف مع الحفاظ على المقاس الطولي العامودي والموحد */
+    .featured-grid-section, .works-grid-section {
+      width: 100%;
+      max-width: 1960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .featured-only-grid, .works-large-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .featured-large-card, .work-card-large {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: 0px !important;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 880px; /* ارتفاع طولي ضخم وموحد لكل الكروت لتبقى بنفس الحجم تماماً */
+    }
+
+    .featured-large-card:hover, .work-card-large:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-pink);
+    }
+
+    .featured-large-card img, .work-card-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0px !important;
+    }
+
+    .featured-card-title-bottom, .work-card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; width: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 2;
+    }
+
+    .featured-card-title-bottom h3, .work-meta-bottom h3 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .work-tag-top {
+      position: absolute;
+      top: 18px; right: 18px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      background: rgba(0,0,0,0.85);
+      color: var(--accent-pink);
+      padding: 0.5rem 1.1rem;
+      border-radius: 0px;
+      border: 1px solid var(--border-color);
+      z-index: 2;
+    }
+
+    .explore-more-btn-inside {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-pink);
+      color: #121212;
+      padding: 0.6rem 1.4rem;
+      border-radius: 0px !important;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    /* About Section (عني) */
+    .about-card {
+      width: 100%;
+      max-width: 1960px;
+      margin: 5rem auto;
+      background: var(--card-bg);
+      border-radius: 0px !important;
+      padding: 4.5rem 5rem;
+      display: flex;
+      align-items: center;
+      gap: 4.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .profile-avatar-large {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--accent-pink);
+      flex-shrink: 0;
+    }
+
+    .profile-details p {
+      font-size: 1.3rem;
+      line-height: 2;
+      opacity: 0.95;
+      margin-bottom: 1.1rem;
+    }
+
+    /* Services & Skills */
+    .services-grid, .skills-section {
+      max-width: 1960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-box, .skill-item-card {
+      background: var(--card-bg);
+      padding: 3.5rem;
+      border-radius: 0px !important;
+      border: 1px solid var(--border-color);
+    }
+
+    .service-box h3, .skill-item-card h3 {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--accent-pink);
+      margin-bottom: 1rem;
+    }
+
+    .service-box p, .skill-item-card p {
+      font-size: 1.2rem;
+      line-height: 2;
+      opacity: 0.95;
+    }
+
+    .skills-section { margin-top: 5rem; }
+    .skills-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 1rem;
+    }
+
+    .contact-box {
+      background: var(--card-bg);
+      padding: 4.5rem 2.5rem;
+      border-radius: 0px !important;
+      border: 2px solid var(--accent-pink);
+      text-align: center;
+    }
+
+    .contact-buttons-group {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp-btn-pink {
+      background: var(--accent-pink);
+      color: #121212;
+      padding: 1rem 2.5rem;
+      border-radius: 0px !important;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .insta-btn {
+      background: transparent;
+      color: var(--text-main);
+      border: 2px solid var(--accent-pink);
+      padding: 1rem 2.5rem;
+      border-radius: 0px !important;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    /* Floating Order Button */
+    .floating-order-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 9990;
+      background: var(--accent-pink);
+      color: #121212;
+      padding: 0.9rem 2.2rem;
+      border-radius: 0px !important;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+    }
+
+    /* Modal (صفحة البراند) */
+    .case-study-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-site);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 5rem 2rem;
+    }
+
+    .case-study-modal.active { display: block; }
+
+    .close-case-btn {
+      position: fixed;
+      top: 35px; left: 45px;
+      background: var(--accent-pink);
+      color: #121212;
+      border: none;
+      padding: 0.9rem 2.5rem;
+      border-radius: 0px !important;
+      font-size: 1.15rem;
+      font-weight: 900;
+      cursor: pointer;
+      z-index: 10001;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+
+    .case-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+    }
+
+    .case-container h2 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: var(--accent-pink);
+    }
+
+    .project-details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .detail-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      border-radius: 0px !important;
+    }
+
+    .detail-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent-pink);
+      margin-bottom: 0.9rem;
+    }
+
+    .detail-card p {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      opacity: 0.92;
+    }
+
+    /* شبكة صور البراند داخل النافذة */
+    .brand-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .brand-gallery-card {
+      background: var(--card-bg);
+      border-radius: 0px !important;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .brand-gallery-card:hover {
+      transform: scale(1.02);
+      border-color: var(--accent-pink);
+    }
+
+    .brand-gallery-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0px !important;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 20000;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.96);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .lightbox-content-wrapper {
+      position: relative;
+      max-width: 90vw;
+      max-height: 88vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-modal img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 0px !important;
+      box-shadow: 0 0 35px rgba(0,0,0,0.8);
+      object-fit: contain;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+
+    .lightbox-modal img.zoomed {
+      transform: scale(1.5);
+      cursor: zoom-out;
+    }
+
+    .lightbox-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(20, 20, 20, 0.85);
+      color: var(--accent-pink);
+      border: 2px solid var(--accent-pink);
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 20005;
+      transition: all 0.3s ease;
+    }
+
+    .lightbox-arrow:hover {
+      background: var(--accent-pink);
+      color: #121212;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .lightbox-arrow.left { left: 35px; }
+    .lightbox-arrow.right { right: 35px; }
+
+    .lightbox-close-btn {
+      position: fixed;
+      top: 30px; right: 35px;
+      background: var(--accent-pink);
+      color: #121212;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 0px !important;
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      z-index: 20005;
+    }
+
+    .lightbox-counter {
+      position: fixed;
+      bottom: 25px;
+      color: var(--accent-pink);
+      font-size: 1.2rem;
+      font-weight: 800;
+      background: rgba(0,0,0,0.8);
+      padding: 0.5rem 1.5rem;
+      border-radius: 0px;
+      border: 1px solid var(--border-color);
+    }
+
+    footer {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 3.5rem 1rem;
+      font-weight: 800;
+      opacity: 0.85;
+      margin-top: 6rem;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 1100px) {
+      .featured-only-grid, .works-large-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid, .project-details-grid, .brand-gallery-grid { grid-template-columns: 1fr; }
+      .about-card { flex-direction: column; text-align: center; }
+      .featured-large-card, .work-card-large { height: 650px; }
+    }
+
+    @media (max-width: 700px) {
+      .featured-only-grid, .works-large-grid { grid-template-columns: 1fr; }
+      nav ul { gap: 1.2rem; }
+      .hero-content-overlay h1 { font-size: 2.3rem; }
+      .featured-large-card, .work-card-large { height: 520px; }
+      .lightbox-arrow.left { left: 10px; }
+      .lightbox-arrow.right { right: 10px; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <div class="custom-cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- الزر العائم "اطلب الآن" -->
+  <a href="https://wa.me/962782796712" target="_blank" class="floating-order-btn">
+    <span>💬 اطلب الآن</span>
+  </a>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <nav>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#featured">مختارات من أعمالي</a></li>
+          <li><a href="#about">عني</a></li>
+          <li><a href="#works">معرض الأعمال</a></li>
+          <li><a href="#services">ماذا أقدّم؟</a></li>
+          <li><a href="#skills">المهارات</a></li>
+          <li><a href="#contact">التواصل</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-left-group">
+        <button class="theme-toggle-btn" onclick="toggleTheme()">☀️ / 🌙 المظهر</button>
+        <img src="qamar-logo.png" alt="Qamar Logo" class="nav-logo">
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. الواجهة الرئيسية -->
+  <section id="home" class="hero-fullscreen">
+    <img src="صورة تعريفية ل داراه.jpg" alt="Dara Ring Cover" class="hero-bg-img">
+    <div class="hero-content-overlay">
+      <span class="hero-tag-top">QAMAR KHALED · PORTFOLIO</span>
+      <h1>كل فكرة تصبح جميلة مع قمر.</h1>
+      <p class="hero-subtitle-text">مصممة جرافيك ومصورة منتجات</p>
+    </div>
+  </section>
+
+  <!-- 2. مختارات من أعمالي -->
+  <section id="featured" class="featured-grid-section">
+    <h2 class="section-title">مختارات من أعمالي</h2>
+    <div class="featured-only-grid">
+      <div class="featured-large-card" onclick="openSingleImage('واقي1.png')">
+        <img src="واقي1.png" alt="SOLÉA">
+        <div class="featured-card-title-bottom">
+          <h3>SOLÉA | واقي الشمس</h3>
+        </div>
+      </div>
+      <div class="featured-large-card" onclick="openSingleImage('عطر4.png')">
+        <img src="عطر4.png" alt="AYA Perfumes">
+        <div class="featured-card-title-bottom">
+          <h3>AYA | العطور والمسك</h3>
+        </div>
+      </div>
+      <div class="featured-large-card" onclick="openSingleImage('noura-1.png')">
+        <img src="noura-1.png" alt="NOURA">
+        <div class="featured-card-title-bottom">
+          <h3>NOURA | كريم الوجه</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. قسم عني -->
+  <section id="about" style="padding: 0 1rem;">
+    <div class="about-card">
+      <img src="صورتييي.jpg" alt="قمر خالد" class="profile-avatar-large">
+      <div class="profile-details">
+        <h2 style="font-size: 2.6rem; font-weight: 900; margin-bottom: 1rem; color: var(--accent-pink);">عني</h2>
+        <p>مرحبا انا قمر خالد طالبة وسائط إبداعية مهتمة بالتصميم الجرافيكي وتصوير المنتجات أحب تجربة الأفكار والألوان وتنسيق العناصر البصرية لإنتاج تصاميم تعبر عن الفكرة بطريقة واضحة وجذابة.</p>
+        <p>كما أهتم بتصوير المنتجات وإظهار تفاصيلها من خلال الإضاءة والخلفيات المناسبة</p>
+        <p>أعمل على تطوير مهاراتي من خلال تنفيذ المشاريع والتجربة المستمرة وأسعى إلى اكتساب خبرات جديدة تساعدني على تطوير أسلوبي في التصميم والتصوير</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. معرض الأعمال -->
+  <section id="works" class="works-grid-section">
+    <h2 class="section-title">معرض الأعمال والمشاريع</h2>
+    <div class="works-large-grid">
+      <div class="work-card-large" onclick="openCaseStudy('case-solea')">
+        <span class="work-tag-top">01 / تصوير منتجات</span>
+        <img src="واقي1.png" alt="SOLÉA">
+        <div class="work-card-overlay">
+          <h3>SOLÉA</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+
+      <div class="work-card-large" onclick="openCaseStudy('case-aya')">
+        <span class="work-tag-top">02 / العطور </span>
+        <img src="عطر4.png" alt="AYA Perfumes">
+        <div class="work-card-overlay">
+          <h3>AYA</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+
+      <div class="work-card-large" onclick="openCaseStudy('case-noura')">
+        <span class="work-tag-top">03 / العناية بالبشرة</span>
+        <img src="noura-1.png" alt="NOURA">
+        <div class="work-card-overlay">
+          <h3>NOURA</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+
+      <div class="work-card-large" onclick="openCaseStudy('case-lumea')">
+        <span class="work-tag-top">04 / غسول الوجه</span>
+        <img src="غسول 1.png" alt="LUMÉA">
+        <div class="work-card-overlay">
+          <h3>LUMÉA</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+
+      <div class="work-card-large" onclick="openCaseStudy('case-glamav')">
+        <span class="work-tag-top">05 / مستحضرات تجميل</span>
+        <img src="2.png" alt="GLAMAV">
+        <div class="work-card-overlay">
+          <h3>GLAMAV</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+
+      <div class="work-card-large" onclick="openCaseStudy('case-aurel')">
+        <span class="work-tag-top">06 / الساعات الفاخرة</span>
+        <img src="ساعهه.png" alt="AUREL">
+        <div class="work-card-overlay">
+          <h3>AUREL</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+
+      <div class="work-card-large" onclick="openCaseStudy('case-dara')">
+        <span class="work-tag-top">07 / المجوهرات</span>
+        <img src="خاتم 1.png" alt="DARA">
+        <div class="work-card-overlay">
+          <h3>DARA</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+
+      <div class="work-card-large" onclick="openCaseStudy('case-cuecraft')">
+        <span class="work-tag-top">08 / هوية ترفيهية</span>
+        <img src="كرافت 3.png" alt="CUE CRAFT">
+        <div class="work-card-overlay">
+          <h3>CUE CRAFT</h3>
+          <span class="explore-more-btn-inside">استكشف المزيد ↘</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ماذا أقدم؟ -->
+  <section id="services">
+    <h2 class="section-title">ماذا أقدّم؟</h2>
+    <div class="services-grid">
+      <div class="service-box">
+        <h3>تصوير المنتجات الاحترافي</h3>
+        <p>تقديم خدمة تصوير المنتجات بأسلوب فني  عبر الاهتمام بضبط الإضاءات و اختيار الزوايا المناسبة والخلفيات التي تظهر أدق تفاصيل المنتج وجماله </p>
+      </div>
+      <div class="service-box">
+        <h3>التصميم الجرافيكي والإعلانات</h3>
+        <p>نصمم المنتجات بعد تصويرها بطريقة مرتبة كإعلان تسويقي جذاب يشمل إعداد البوسترات و الهويات البصرية واختيار الألوان والخطوط المتناسقة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. المهارات والخبرات -->
+  <section id="skills" class="skills-section">
+    <h2 class="section-title">المهارات والخبرات</h2>
+    <div class="skills-list-grid">
+      <div class="skill-item-card">
+        <h3>التصميم والتطبيقات </h3>
+        <p>خبرة واسعة في الاستخدام الاحترافي لمنصة Canva و لإخراج الإعلانات والهويات بسرعة ودقة</p>
+      </div>
+      <div class="skill-item-card">
+        <h3>التصميم الجرافيكي</h3>
+        <p>تصميم البوسترات والإعلانات وترتيب العناصر البصرية بطريقة واضحة وجذابة.</p>
+      </div>
+      <div class="skill-item-card">
+        <h3>اختيار الألوان والخطوط</h3>
+        <p>تنسيق الألوان والخطوط بما يتناسب مع فكرة التصميم.</p>
+      </div>
+      <div class="skill-item-card">
+        <h3>تصوير المنتجات</h3>
+        <p>الاهتمام بالإضاءة والخلفيات وزوايا التصوير لإظهار المنتج بأفضل شكل ممكن.</p>
+      </div>
+      <div class="skill-item-card">
+        <h3>تعديل الصور وتنسيق العناصر</h3>
+        <p>تحسين الصور والاهتمام بالتفاصيل والمساحات والتوازن داخل التصميم.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. التواصل -->
+  <section id="contact" class="contact-section">
+    <div class="contact-box">
+      <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.9rem;">تواصل معي</h2>
+      <p style="font-size: 1.2rem; opacity: 0.9;">سعيد جداً بتلقي استفساراتكم وملاحظاتكم وعروض العمل عبر القنوات التالية:</p>
+      <div class="contact-buttons-group">
+        <a href="https://wa.me/962782796712" target="_blank" class="whatsapp-btn-pink">
+          <span>💬 الواتساب</span>
+          <span style="font-size: 1.05rem;">+962 7 8279 6712</span>
+        </a>
+        <a href="https://www.instagram.com/qam_ar2009?rpxt=MWczdmFoMjAzODhxNg==" target="_blank" class="insta-btn">
+          <span>📷 الإنستغرام</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>جميع الحقوق محفوظة © قمر خالد | 2026</p>
+  </footer>
+
+
+  <!-- ================= CASE STUDY MODALS ================= -->
+
+  <!-- Modal: SOLÉA -->
+  <div id="case-solea" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-solea')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>SOLÉA | واقي الشمس</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>عملت على تصميم إعلانات لبراند SOLÉA المتخصص في واقي الشمس، واستخدمت أسلوبًا بصريًا يتناسب مع فكرة الصيف والحماية من أشعة الشمس.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>الأشخاص الذين يهتمون بحماية بشرتهم أثناء الخروج والتعرّض لأشعة الشمس.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>إبراز المنتج وتوضيح وظيفته الأساسية، مع استخدام ألوان وعناصر مرتبطة بالشمس والصيف.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>التذكير بأهمية استخدام واقي الشمس ضمن روتين العناية بالبشرة اليومي.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['واقي1.png', 'واقي 2.png'], 0)">
+          <img src="واقي1.png" alt="Soléa 1">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['واقي1.png', 'واقي 2.png'], 1)">
+          <img src="واقي 2.png" alt="Soléa 2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: AYA -->
+  <div id="case-aya" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-aya')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>AYA | العطور والمسك</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>صممت إعلانات لبراند AYA المتخصص في العطور، وركزت على طريقة عرض زجاجة العطر واختيار العناصر التي تتناسب مع شكل المنتج وطبيعته.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>الأشخاص المهتمون بالعطور واختيار الروائح التي تناسب أذواقهم ومناسباتهم.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>إظهار زجاجة العطر بطريقة جذابة، والاهتمام بتوزيع العناصر والألوان حتى يكون المنتج هو العنصر الأساسي.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>إظهار العطر بطريقة جميلة تساعد على جذب الانتباه والتعرّف على المنتج.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['عطر4.png', 'عطر1.png', 'عطر2.png', 'عطر5.png', 'عطر6.png'], 0)">
+          <img src="عطر4.png" alt="Aya 4">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['عطر4.png', 'عطر1.png', 'عطر2.png', 'عطر5.png', 'عطر6.png'], 1)">
+          <img src="عطر1.png" alt="Aya 1">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['عطر4.png', 'عطر1.png', 'عطر2.png', 'عطر5.png', 'عطر6.png'], 2)">
+          <img src="عطر2.png" alt="Aya 2">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['عطر4.png', 'عطر1.png', 'عطر2.png', 'عطر5.png', 'عطر6.png'], 3)">
+          <img src="عطر5.png" alt="Aya 5">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['عطر4.png', 'عطر1.png', 'عطر2.png', 'عطر5.png', 'عطر6.png'], 4)">
+          <img src="عطر6.png" alt="Aya 6">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: NOURA -->
+  <div id="case-noura" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-noura')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>NOURA | كريم الوجه</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>صممت هوية بصرية لبراند NORA المتخصص في كريمات الوجه، وركزت في التصميم على البساطة والنعومة بما يتناسب مع منتجات العناية بالبشرة.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>النساء المهتمات بالعناية ببشرتهن واستخدام منتجات العناية اليومية.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>إظهار المنتج بطريقة مرتبة وجذابة، وتوضيح نوعه من خلال الألوان والعناصر المستخدمة.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>تقديم منتج للعناية بالبشرة بمظهر بسيط وناعم يعطي إحساسًا بالراحة والاهتمام.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['noura-1.png', 'noura-2.jpg'], 0)">
+          <img src="noura-1.png" alt="Noura 1">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['noura-1.png', 'noura-2.jpg'], 1)">
+          <img src="noura-2.jpg" alt="Noura 2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: LUMÉA -->
+  <div id="case-lumea" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-lumea')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>LUMÉA | غسول الوجه</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>صممت إعلانات لبراند LORIN المتخصص في غسول الوجه بماء الورد، واستلهمت أسلوب التصميم من طبيعة المنتج وارتباطه بالعناية بالبشرة.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>الأشخاص المهتمون بتنظيف البشرة والعناية بها ضمن روتينهم اليومي.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>توضيح طبيعة المنتج وإبراز العبوة باستخدام ألوان وعناصر مناسبة لفكرة ماء الورد.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>تقديم منتج العناية بالبشرة بطريقة بسيطة توضح استخدامه وتلفت الانتباه إليه.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['غسول 1.png', 'غسول 2.png', 'غسول3.png', 'غسول4.png'], 0)">
+          <img src="غسول 1.png" alt="Luméa 1">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['غسول 1.png', 'غسول 2.png', 'غسول3.png', 'غسول4.png'], 1)">
+          <img src="غسول 2.png" alt="Luméa 2">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['غسول 1.png', 'غسول 2.png', 'غسول3.png', 'غسول4.png'], 2)">
+          <img src="غسول3.png" alt="Luméa 3">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['غسول 1.png', 'غسول 2.png', 'غسول3.png', 'غسول4.png'], 3)">
+          <img src="غسول4.png" alt="Luméa 4">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: GLAMAV -->
+  <div id="case-glamav" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-glamav')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>GLAMAV | ملمع الشفاه</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>صممت مجموعة من التصاميم الإعلانية لبراند GLAMAV المتخصص في ملمّع الشفاه، واهتممت بإظهار لون المنتج ولمعانه بطريقة جذابة.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>الفتيات والنساء المهتمات بالمكياج ومنتجات تجميل الشفاه.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>إبراز المنتج بطريقة تلفت الانتباه، واستخدام الألوان والتفاصيل البصرية بما يتناسب مع طبيعة المستحضرات.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>إظهار جمال المنتج ولمعانه وتشجيع الجمهور على التعرّف عليه.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['2.png', '1.png', '3.png', '4.png'], 0)">
+          <img src="2.png" alt="Glamav 2">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['2.png', '1.png', '3.png', '4.png'], 1)">
+          <img src="1.png" alt="Glamav 1">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['2.png', '1.png', '3.png', '4.png'], 2)">
+          <img src="3.png" alt="Glamav 3">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['2.png', '1.png', '3.png', '4.png'], 3)">
+          <img src="4.png" alt="Glamav 4">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: AUREL -->
+  <div id="case-aurel" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-aurel')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>AUREL | الساعات</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>عملت على تصميم إعلانات لبراند AUREL المتخصص في الساعات، وركزت على إبراز شكل الساعة وتفاصيلها بطريقة أنيقة تناسب طبيعة المنتج.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>الأشخاص المهتمون بالساعات والتصاميم الأنيقة للاستخدام اليومي والمناسبات.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>لفت الانتباه إلى الساعة وإظهار تفاصيلها بشكل واضح، مع استخدام ألوان وتنسيقات تتناسب مع طبيعة البراند.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>إظهار الساعة كقطعة عملية وأنيقة يمكن أن تكمل الإطلالة.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 0)">
+          <img src="ساعهه.png" alt="Aurel 1">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 1)">
+          <img src="س2.png" alt="Aurel 2">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 2)">
+          <img src="س3.png" alt="Aurel 3">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 3)">
+          <img src="س4.png" alt="Aurel 4">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 4)">
+          <img src="س5.png" alt="Aurel 5">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: DARA -->
+  <div id="case-dara" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-dara')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>DARA | المجوهرات</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>صممت إعلانات لبراند DARA المتخصص في المجوهرات والخواتم، واهتممت بإظهار تفاصيل القطع وطريقة عرضها بما يتناسب مع طبيعة المنتجات.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>الأشخاص المهتمون بالمجوهرات والخواتم والتصاميم البسيطة والأنيقة.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>التركيز على تفاصيل المجوهرات وإظهار شكلها بوضوح، مع اختيار ألوان وخلفيات تساعد على إبراز المنتج.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>إظهار جمال المجوهرات وتفاصيلها من خلال تصميم بسيط ومرتب.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 0)">
+          <img src="خاتم 1.png" alt="Dara 1">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 1)">
+          <img src="خاتم 3.png" alt="Dara 3">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 2)">
+          <img src="خاتم 4.png" alt="Dara 4">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 3)">
+          <img src="خاتم 5.png" alt="Dara 5">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: CUE CRAFT -->
+  <div id="case-cuecraft" class="case-study-modal">
+    <button class="close-case-btn" onclick="closeCaseStudy('case-cuecraft')">إغلاق المشروع ✕</button>
+    <div class="case-container">
+      <h2>CUE CRAFT | البلياردو</h2>
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>نبذة عن المشروع</h3>
+          <p>عملت على تصميم هوية بصرية لبراند Cue Craft، وهو مشروع لنادي بلياردو، وركزت على استخدام عناصر مرتبطة باللعبة لتوضيح فكرة المشروع.</p>
+        </div>
+        <div class="detail-card">
+          <h3>الفئة المستهدفة</h3>
+          <p>الشباب ومحبو لعبة البلياردو والأشخاص المهتمون بالأنشطة الترفيهية.</p>
+        </div>
+        <div class="detail-card">
+          <h3>هدف التصميم</h3>
+          <p>إنشاء تصاميم واضحة ومميزة تعبّر عن طبيعة النادي، وتساعد على جذب المهتمين باللعبة.</p>
+        </div>
+        <div class="detail-card">
+          <h3>رسالة التصميم</h3>
+          <p>تقديم البلياردو كنشاط يجمع بين التركيز والمهارة والترفيه.</p>
+        </div>
+      </div>
+
+      <div class="brand-gallery-grid">
+        <div class="brand-gallery-card" onclick="openLightbox(['كرافت 3.png', 'كرفت 2.png', 'cuecraft-1.jpg'], 0)">
+          <img src="كرافت 3.png" alt="Cue Craft 3">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['كرافت 3.png', 'كرفت 2.png', 'cuecraft-1.jpg'], 1)">
+          <img src="كرفت 2.png" alt="Cue Craft 2">
+        </div>
+        <div class="brand-gallery-card" onclick="openLightbox(['كرافت 3.png', 'كرفت 2.png', 'cuecraft-1.jpg'], 2)">
+          <img src="cuecraft-1.jpg" alt="Cue Craft 1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightbox" class="lightbox-modal">
+    <button class="lightbox-close-btn" onclick="closeLightbox()">إغلاق ✕</button>
+    <button id="arrow-left" class="lightbox-arrow left" onclick="navigateLightbox(-1)">❮</button>
+    <button id="arrow-right" class="lightbox-arrow right" onclick="navigateLightbox(1)">❯</button>
+    
+    <div class="lightbox-content-wrapper">
+      <img id="lightbox-img" src="" alt="Full View" onclick="toggleZoom(this)">
+    </div>
+
+    <div id="lightbox-counter" class="lightbox-counter">صورة 1 من 1</div>
+  </div>
+
+  <script>
+    function openCaseStudy(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCaseStudy(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    /* Lightbox Slider Variables */
+    let currentGalleryImages = [];
+    let currentGalleryIndex = 0;
+
+    function openLightbox(imagesArray, startIndex) {
+      currentGalleryImages = imagesArray;
+      currentGalleryIndex = startIndex;
+      
+      document.getElementById('arrow-left').style.display = 'flex';
+      document.getElementById('arrow-right').style.display = 'flex';
+      document.getElementById('lightbox-counter').style.display = 'block';
+
+      updateLightboxContent();
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function openSingleImage(imgSrc) {
+      currentGalleryImages = [imgSrc];
+      currentGalleryIndex = 0;
+
+      document.getElementById('arrow-left').style.display = 'none';
+      document.getElementById('arrow-right').style.display = 'none';
+      document.getElementById('lightbox-counter').style.display = 'none';
+
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.classList.remove('zoomed');
+      lightboxImg.src = imgSrc;
+      
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function updateLightboxContent() {
+      const lightboxImg = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+      
+      lightboxImg.classList.remove('zoomed');
+      lightboxImg.src = currentGalleryImages[currentGalleryIndex];
+      counter.textContent = `صورة ${currentGalleryIndex + 1} من ${currentGalleryImages.length}`;
+    }
+
+    function navigateLightbox(direction) {
+      if (currentGalleryImages.length <= 1) return;
+
+      currentGalleryIndex += direction;
+
+      if (currentGalleryIndex < 0) {
+        currentGalleryIndex = currentGalleryImages.length - 1;
+      } else if (currentGalleryIndex >= currentGalleryImages.length) {
+        currentGalleryIndex = 0;
+      }
+
+      updateLightboxContent();
+    }
+
+    function toggleZoom(imgElement) {
+      imgElement.classList.toggle('zoomed');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightbox-img').classList.remove('zoomed');
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        body.setAttribute('data-theme', 'light');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+      }
+    }
+
+    // Custom Cursor
+    const cursor = document.querySelector('.custom-cursor');
+    const follower = document.querySelector('.cursor-follower');
+
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      follower.animate({
+        left: e.clientX + 'px',
+        top: e.clientY + 'px'
+      }, { duration: 200, fill: "forwards" });
+    });
+  </script>
+</body>
+</html>
