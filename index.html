@@ -95,12 +95,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
     nav ul {
       display: flex;
       list-style: none;
       gap: 2.5rem;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -139,6 +141,7 @@
       font-weight: 800;
       font-size: 0.95rem;
       transition: all 0.3s ease;
+      white-space: nowrap;
     }
 
     .theme-toggle-btn:hover {
@@ -217,7 +220,7 @@
       border-radius: 3px;
     }
 
-    /* تكبير العرض ليملأ الشاشة وتخفيف المساحات البيضاء على الأطراف مع الحفاظ على المقاس الطولي العامودي والموحد */
+    /* Layout Grids */
     .featured-grid-section, .works-grid-section {
       width: 100%;
       max-width: 1960px;
@@ -228,7 +231,7 @@
     .featured-only-grid, .works-large-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
     .featured-large-card, .work-card-large {
@@ -242,7 +245,7 @@
       transition: transform 0.3s ease;
       display: flex;
       flex-direction: column;
-      height: 880px; /* ارتفاع طولي ضخم وموحد لكل الكروت لتبقى بنفس الحجم تماماً */
+      height: 880px;
     }
 
     .featured-large-card:hover, .work-card-large:hover {
@@ -269,7 +272,7 @@
       z-index: 2;
     }
 
-    .featured-card-title-bottom h3, .work-meta-bottom h3 {
+    .featured-card-title-bottom h3, .work-card-overlay h3 {
       font-size: 1.8rem;
       font-weight: 900;
       color: #ffffff;
@@ -300,7 +303,7 @@
       font-weight: 900;
     }
 
-    /* About Section (عني) */
+    /* About Section */
     .about-card {
       width: 100%;
       max-width: 1960px;
@@ -366,7 +369,7 @@
     .skills-section { margin-top: 5rem; }
     .skills-list-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
@@ -414,7 +417,7 @@
       font-weight: 900;
     }
 
-    /* Floating Order Button */
+    /* Floating Button */
     .floating-order-btn {
       position: fixed;
       bottom: 30px;
@@ -433,7 +436,7 @@
       box-shadow: 0 12px 35px rgba(0,0,0,0.6);
     }
 
-    /* Modal (صفحة البراند) */
+    /* Modals */
     .case-study-modal {
       display: none;
       position: fixed;
@@ -501,7 +504,6 @@
       opacity: 0.92;
     }
 
-    /* شبكة صور البراند داخل النافذة */
     .brand-gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -631,20 +633,48 @@
       font-size: 1.1rem;
     }
 
+    /* Mobile & Tablet Optimizations */
     @media (max-width: 1100px) {
       .featured-only-grid, .works-large-grid { grid-template-columns: repeat(2, 1fr); }
       .services-grid, .project-details-grid, .brand-gallery-grid { grid-template-columns: 1fr; }
-      .about-card { flex-direction: column; text-align: center; }
-      .featured-large-card, .work-card-large { height: 650px; }
+      .about-card { flex-direction: column; text-align: center; padding: 3rem 2rem; }
+      .featured-large-card, .work-card-large { height: 680px; }
     }
 
-    @media (max-width: 700px) {
-      .featured-only-grid, .works-large-grid { grid-template-columns: 1fr; }
-      nav ul { gap: 1.2rem; }
+    @media (max-width: 768px) {
+      .custom-cursor, .cursor-follower { display: none !important; }
+      header { padding: 0.8rem 1rem; }
+      .nav-container { flex-direction: column; gap: 0.8rem; }
+      nav ul { gap: 1rem; justify-content: center; font-size: 0.95rem; }
+      nav a { font-size: 0.95rem; }
+      .nav-logo { height: 75px; }
+
+      .hero-fullscreen { height: 75vh; margin-bottom: 2rem; }
       .hero-content-overlay h1 { font-size: 2.3rem; }
+      .hero-subtitle-text { font-size: 1.3rem; }
+
+      .section-title { font-size: 2.2rem; margin: 3.5rem 0 2rem; }
+
+      .featured-only-grid, .works-large-grid { grid-template-columns: 1fr; }
       .featured-large-card, .work-card-large { height: 520px; }
+
+      .about-card { padding: 2rem 1.2rem; gap: 2rem; }
+      .profile-avatar-large { width: 200px; height: 200px; }
+      .profile-details p { font-size: 1.05rem; }
+
+      .service-box, .skill-item-card { padding: 2rem 1.5rem; }
+      .service-box h3, .skill-item-card h3 { font-size: 1.5rem; }
+
+      .floating-order-btn { bottom: 15px; left: 15px; padding: 0.7rem 1.4rem; font-size: 0.95rem; }
+
+      .case-study-modal { padding: 4rem 1rem 2rem; }
+      .case-container h2 { font-size: 2.2rem; }
+      .close-case-btn { top: 15px; left: 15px; padding: 0.6rem 1.4rem; font-size: 0.95rem; }
+
+      .lightbox-arrow { width: 50px; height: 50px; font-size: 1.5rem; }
       .lightbox-arrow.left { left: 10px; }
       .lightbox-arrow.right { right: 10px; }
+      .lightbox-close-btn { top: 15px; right: 15px; padding: 0.6rem 1.2rem; }
     }
   </style>
 </head>
@@ -742,7 +772,7 @@
       </div>
 
       <div class="work-card-large" onclick="openCaseStudy('case-aya')">
-        <span class="work-tag-top">02 / العطور </span>
+        <span class="work-tag-top">02 / العطور</span>
         <img src="عطر4.png" alt="AYA Perfumes">
         <div class="work-card-overlay">
           <h3>AYA</h3>
@@ -812,7 +842,7 @@
     <div class="services-grid">
       <div class="service-box">
         <h3>تصوير المنتجات الاحترافي</h3>
-        <p>تقديم خدمة تصوير المنتجات بأسلوب فني  عبر الاهتمام بضبط الإضاءات و اختيار الزوايا المناسبة والخلفيات التي تظهر أدق تفاصيل المنتج وجماله </p>
+        <p>تقديم خدمة تصوير المنتجات بأسلوب فني عبر الاهتمام بضبط الإضاءات و اختيار الزوايا المناسبة والخلفيات التي تظهر أدق تفاصيل المنتج وجماله</p>
       </div>
       <div class="service-box">
         <h3>التصميم الجرافيكي والإعلانات</h3>
@@ -826,7 +856,7 @@
     <h2 class="section-title">المهارات والخبرات</h2>
     <div class="skills-list-grid">
       <div class="skill-item-card">
-        <h3>التصميم والتطبيقات </h3>
+        <h3>التصميم والتطبيقات</h3>
         <p>خبرة واسعة في الاستخدام الاحترافي لمنصة Canva و لإخراج الإعلانات والهويات بسرعة ودقة</p>
       </div>
       <div class="skill-item-card">
@@ -869,10 +899,7 @@
     <p>جميع الحقوق محفوظة © قمر خالد | 2026</p>
   </footer>
 
-
-  <!-- ================= CASE STUDY MODALS ================= -->
-
-  <!-- Modal: SOLÉA -->
+  <!-- CASE STUDY MODALS -->
   <div id="case-solea" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-solea')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -895,7 +922,6 @@
           <p>التذكير بأهمية استخدام واقي الشمس ضمن روتين العناية بالبشرة اليومي.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
         <div class="brand-gallery-card" onclick="openLightbox(['واقي1.png', 'واقي 2.png'], 0)">
           <img src="واقي1.png" alt="Soléa 1">
@@ -907,7 +933,6 @@
     </div>
   </div>
 
-  <!-- Modal: AYA -->
   <div id="case-aya" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-aya')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -930,7 +955,6 @@
           <p>إظهار العطر بطريقة جميلة تساعد على جذب الانتباه والتعرّف على المنتج.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
         <div class="brand-gallery-card" onclick="openLightbox(['عطر4.png', 'عطر1.png', 'عطر2.png', 'عطر5.png', 'عطر6.png'], 0)">
           <img src="عطر4.png" alt="Aya 4">
@@ -951,7 +975,6 @@
     </div>
   </div>
 
-  <!-- Modal: NOURA -->
   <div id="case-noura" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-noura')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -974,7 +997,6 @@
           <p>تقديم منتج للعناية بالبشرة بمظهر بسيط وناعم يعطي إحساسًا بالراحة والاهتمام.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
         <div class="brand-gallery-card" onclick="openLightbox(['noura-1.png', 'noura-2.jpg'], 0)">
           <img src="noura-1.png" alt="Noura 1">
@@ -986,7 +1008,6 @@
     </div>
   </div>
 
-  <!-- Modal: LUMÉA -->
   <div id="case-lumea" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-lumea')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -1009,7 +1030,6 @@
           <p>تقديم منتج العناية بالبشرة بطريقة بسيطة توضح استخدامه وتلفت الانتباه إليه.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
         <div class="brand-gallery-card" onclick="openLightbox(['غسول 1.png', 'غسول 2.png', 'غسول3.png', 'غسول4.png'], 0)">
           <img src="غسول 1.png" alt="Luméa 1">
@@ -1027,7 +1047,6 @@
     </div>
   </div>
 
-  <!-- Modal: GLAMAV -->
   <div id="case-glamav" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-glamav')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -1050,7 +1069,6 @@
           <p>إظهار جمال المنتج ولمعانه وتشجيع الجمهور على التعرّف عليه.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
         <div class="brand-gallery-card" onclick="openLightbox(['2.png', '1.png', '3.png', '4.png'], 0)">
           <img src="2.png" alt="Glamav 2">
@@ -1068,7 +1086,6 @@
     </div>
   </div>
 
-  <!-- Modal: AUREL -->
   <div id="case-aurel" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-aurel')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -1088,31 +1105,29 @@
         </div>
         <div class="detail-card">
           <h3>رسالة التصميم</h3>
-          <p>إظهار الساعة كقطعة عملية وأنيقة يمكن أن تكمل الإطلالة.</p>
+          <p>إبراز الساعة كقطعة عملية وأنيقة يمكن أن تكمل الإطلالة.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
-        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 0)">
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.jpg', 'س4.jpg', 'س5.jpg'], 0)">
           <img src="ساعهه.png" alt="Aurel 1">
         </div>
-        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 1)">
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.jpg', 'س4.jpg', 'س5.jpg'], 1)">
           <img src="س2.png" alt="Aurel 2">
         </div>
-        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 2)">
-          <img src="س3.png" alt="Aurel 3">
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.jpg', 'س4.jpg', 'س5.jpg'], 2)">
+          <img src="س3.jpg" alt="Aurel 3">
         </div>
-        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 3)">
-          <img src="س4.png" alt="Aurel 4">
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.jpg', 'س4.jpg', 'س5.jpg'], 3)">
+          <img src="س4.jpg" alt="Aurel 4">
         </div>
-        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 4)">
-          <img src="س5.png" alt="Aurel 5">
+        <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.jpg', 'س4.jpg', 'س5.jpg'], 4)">
+          <img src="س5.jpg" alt="Aurel 5">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal: DARA -->
   <div id="case-dara" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-dara')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -1135,25 +1150,23 @@
           <p>إظهار جمال المجوهرات وتفاصيلها من خلال تصميم بسيط ومرتب.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
-        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 0)">
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.jpg', 'خاتم 5.jpg'], 0)">
           <img src="خاتم 1.png" alt="Dara 1">
         </div>
-        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 1)">
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.jpg', 'خاتم 5.jpg'], 1)">
           <img src="خاتم 3.png" alt="Dara 3">
         </div>
-        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 2)">
-          <img src="خاتم 4.png" alt="Dara 4">
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.jpg', 'خاتم 5.jpg'], 2)">
+          <img src="خاتم 4.jpg" alt="Dara 4">
         </div>
-        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 3)">
-          <img src="خاتم 5.png" alt="Dara 5">
+        <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.jpg', 'خاتم 5.jpg'], 3)">
+          <img src="خاتم 5.jpg" alt="Dara 5">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal: CUE CRAFT -->
   <div id="case-cuecraft" class="case-study-modal">
     <button class="close-case-btn" onclick="closeCaseStudy('case-cuecraft')">إغلاق المشروع ✕</button>
     <div class="case-container">
@@ -1176,7 +1189,6 @@
           <p>تقديم البلياردو كنشاط يجمع بين التركيز والمهارة والترفيه.</p>
         </div>
       </div>
-
       <div class="brand-gallery-grid">
         <div class="brand-gallery-card" onclick="openLightbox(['كرافت 3.png', 'كرفت 2.png', 'cuecraft-1.jpg'], 0)">
           <img src="كرافت 3.png" alt="Cue Craft 3">
@@ -1215,7 +1227,6 @@
       document.body.style.overflow = 'auto';
     }
 
-    /* Lightbox Slider Variables */
     let currentGalleryImages = [];
     let currentGalleryIndex = 0;
 
@@ -1288,18 +1299,19 @@
       }
     }
 
-    // Custom Cursor
     const cursor = document.querySelector('.custom-cursor');
     const follower = document.querySelector('.cursor-follower');
 
-    window.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      follower.animate({
-        left: e.clientX + 'px',
-        top: e.clientY + 'px'
-      }, { duration: 200, fill: "forwards" });
-    });
+    if (cursor && follower) {
+      window.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        follower.animate({
+          left: e.clientX + 'px',
+          top: e.clientY + 'px'
+        }, { duration: 200, fill: "forwards" });
+      });
+    }
   </script>
 </body>
 </html>
