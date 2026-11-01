@@ -11,21 +11,12 @@
   <style>
     :root {
       --font-main: 'Tajawal', sans-serif;
-      --bg-site: #0b0b0c;
-      --text-main: #f9f8f4;
-      --accent-pink: #f5c2d7; 
-      --accent-gray: #b3b5b8; 
-      --card-bg: #141416;
-      --border-color: rgba(245, 194, 215, 0.28);
-    }
-
-    [data-theme="light"] {
       --bg-site: #f8f7f9;
       --text-main: #121212;
       --accent-pink: #e8a7c2;
       --accent-gray: #7a7c80;
       --card-bg: #ffffff;
-      --border-color: rgba(0, 0, 0, 0.12);
+      --border-color: rgba(232, 167, 194, 0.3);
     }
 
     * {
@@ -44,48 +35,17 @@
       font-family: var(--font-main);
       line-height: 1.8;
       overflow-x: hidden;
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
-
-    /* Custom Cursor */
-    .custom-cursor {
-      width: 12px;
-      height: 12px;
-      background: var(--accent-pink);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 99999;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 15px var(--accent-pink);
-    }
-
-    .cursor-follower {
-      width: 42px; height: 42px;
-      border: 2px solid var(--accent-pink);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 99998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.15s ease-out;
     }
 
     /* Header Navigation */
     header {
-      background: rgba(11, 11, 12, 0.95);
+      background: rgba(248, 247, 249, 0.95);
       backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
       z-index: 1000;
       padding: 1rem 2rem;
       border-bottom: 1px solid var(--border-color);
-    }
-
-    [data-theme="light"] header {
-      background: rgba(248, 247, 249, 0.95);
     }
 
     .nav-container {
@@ -115,7 +75,6 @@
 
     nav a:hover {
       color: var(--accent-pink);
-      text-shadow: 0 0 10px rgba(245, 194, 215, 0.5);
     }
 
     .nav-left-group {
@@ -125,28 +84,10 @@
     }
 
     .nav-logo {
-      height: 120px;
+      height: 160px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 4px 15px rgba(245, 194, 215, 0.45));
-    }
-
-    .theme-toggle-btn {
-      background: var(--card-bg);
-      color: var(--text-main);
-      border: 1.5px solid var(--accent-pink);
-      padding: 0.6rem 1.3rem;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .theme-toggle-btn:hover {
-      background: var(--accent-pink);
-      color: #121212;
+      filter: drop-shadow(0 4px 15px rgba(232, 167, 194, 0.45));
     }
 
     /* Hero Fullscreen */
@@ -167,7 +108,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      filter: brightness(0.42);
+      filter: brightness(0.5);
       z-index: 1;
     }
 
@@ -208,6 +149,7 @@
       font-weight: 900;
       text-align: center;
       margin: 5rem 0 3.5rem;
+      color: var(--text-main);
     }
 
     .section-title::after {
@@ -218,6 +160,43 @@
       background: var(--accent-pink);
       margin: 0.9rem auto 0;
       border-radius: 3px;
+    }
+
+    /* About Section */
+    .about-section-container {
+      width: 100%;
+      max-width: 1960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .about-card {
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 0px !important;
+      padding: 4.5rem 5rem;
+      display: flex;
+      align-items: center;
+      gap: 4.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .profile-avatar-large {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--accent-pink);
+      flex-shrink: 0;
+      transform: rotate(90deg);
+    }
+
+    .profile-details p {
+      font-size: 1.2rem;
+      line-height: 2.1;
+      opacity: 0.95;
+      margin-bottom: 1.1rem;
     }
 
     /* Layout Grids */
@@ -241,7 +220,7 @@
       overflow: hidden;
       border: 1px solid var(--border-color);
       cursor: pointer;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.08);
       transition: transform 0.3s ease;
       display: flex;
       flex-direction: column;
@@ -264,7 +243,7 @@
     .featured-card-title-bottom, .work-card-overlay {
       position: absolute;
       bottom: 0; left: 0; width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
       padding: 2.5rem 1.5rem;
       display: flex;
       justify-content: space-between;
@@ -283,8 +262,8 @@
       top: 18px; right: 18px;
       font-size: 0.9rem;
       font-weight: 800;
-      background: rgba(0,0,0,0.85);
-      color: var(--accent-pink);
+      background: rgba(255,255,255,0.9);
+      color: #121212;
       padding: 0.5rem 1.1rem;
       border-radius: 0px;
       border: 1px solid var(--border-color);
@@ -301,36 +280,6 @@
       border-radius: 0px !important;
       font-size: 1rem;
       font-weight: 900;
-    }
-
-    /* About Section */
-    .about-card {
-      width: 100%;
-      max-width: 1960px;
-      margin: 5rem auto;
-      background: var(--card-bg);
-      border-radius: 0px !important;
-      padding: 4.5rem 5rem;
-      display: flex;
-      align-items: center;
-      gap: 4.5rem;
-      border: 1px solid var(--border-color);
-    }
-
-    .profile-avatar-large {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid var(--accent-pink);
-      flex-shrink: 0;
-    }
-
-    .profile-details p {
-      font-size: 1.3rem;
-      line-height: 2;
-      opacity: 0.95;
-      margin-bottom: 1.1rem;
     }
 
     /* Services & Skills */
@@ -351,12 +300,13 @@
       padding: 3.5rem;
       border-radius: 0px !important;
       border: 1px solid var(--border-color);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
     }
 
     .service-box h3, .skill-item-card h3 {
       font-size: 1.9rem;
       font-weight: 900;
-      color: var(--accent-pink);
+      color: #b05e81;
       margin-bottom: 1rem;
     }
 
@@ -373,7 +323,7 @@
       gap: 1.5rem;
     }
 
-    /* Contact Section */
+    /* Contact Section & Circular Social Icons */
     .contact-section {
       max-width: 900px;
       margin: 6rem auto;
@@ -386,9 +336,10 @@
       border-radius: 0px !important;
       border: 2px solid var(--accent-pink);
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
-    .contact-buttons-group {
+    .social-circles-container {
       display: flex;
       justify-content: center;
       gap: 1.8rem;
@@ -396,25 +347,28 @@
       flex-wrap: wrap;
     }
 
-    .whatsapp-btn-pink {
-      background: var(--accent-pink);
-      color: #121212;
-      padding: 1rem 2.5rem;
-      border-radius: 0px !important;
+    .social-circle-item {
+      width: 75px;
+      height: 75px;
+      background: #121212;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 900;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border: 2px solid transparent;
     }
 
-    .insta-btn {
-      background: transparent;
-      color: var(--text-main);
-      border: 2px solid var(--accent-pink);
-      padding: 1rem 2.5rem;
-      border-radius: 0px !important;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 900;
+    .social-circle-item:hover {
+      background: var(--accent-pink);
+      color: #121212;
+      transform: translateY(-5px);
+      border-color: #121212;
     }
 
     /* Floating Button */
@@ -433,7 +387,7 @@
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
     }
 
     /* Modals */
@@ -461,7 +415,7 @@
       font-weight: 900;
       cursor: pointer;
       z-index: 10001;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
 
     .case-container {
@@ -474,7 +428,7 @@
       font-weight: 900;
       text-align: center;
       margin-bottom: 3.5rem;
-      color: var(--accent-pink);
+      color: #b05e81;
     }
 
     .project-details-grid {
@@ -494,7 +448,7 @@
     .detail-card h3 {
       font-size: 1.4rem;
       font-weight: 800;
-      color: var(--accent-pink);
+      color: #b05e81;
       margin-bottom: 0.9rem;
     }
 
@@ -515,7 +469,7 @@
       border-radius: 0px !important;
       overflow: hidden;
       border: 1px solid var(--border-color);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -633,7 +587,6 @@
       font-size: 1.1rem;
     }
 
-    /* Mobile & Tablet Optimizations */
     @media (max-width: 1100px) {
       .featured-only-grid, .works-large-grid { grid-template-columns: repeat(2, 1fr); }
       .services-grid, .project-details-grid, .brand-gallery-grid { grid-template-columns: 1fr; }
@@ -642,12 +595,11 @@
     }
 
     @media (max-width: 768px) {
-      .custom-cursor, .cursor-follower { display: none !important; }
       header { padding: 0.8rem 1rem; }
       .nav-container { flex-direction: column; gap: 0.8rem; }
       nav ul { gap: 1rem; justify-content: center; font-size: 0.95rem; }
       nav a { font-size: 0.95rem; }
-      .nav-logo { height: 75px; }
+      .nav-logo { height: 110px; }
 
       .hero-fullscreen { height: 75vh; margin-bottom: 2rem; }
       .hero-content-overlay h1 { font-size: 2.3rem; }
@@ -678,14 +630,11 @@
     }
   </style>
 </head>
-<body data-theme="dark">
+<body>
 
-  <div class="custom-cursor"></div>
-  <div class="cursor-follower"></div>
-
-  <!-- الزر العائم "اطلب الآن" -->
+  <!-- الزر العائم -->
   <a href="https://wa.me/962782796712" target="_blank" class="floating-order-btn">
-    <span>💬 اطلب الآن</span>
+    <span>💬 لنبدأ مشروع معاً</span>
   </a>
 
   <!-- Header -->
@@ -694,17 +643,16 @@
       <nav>
         <ul>
           <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#about">نبذة عني</a></li>
           <li><a href="#featured">مختارات من أعمالي</a></li>
-          <li><a href="#about">عني</a></li>
           <li><a href="#works">معرض الأعمال</a></li>
-          <li><a href="#services">ماذا أقدّم؟</a></li>
+          <li><a href="#services">ماذا أقدم</a></li>
           <li><a href="#skills">المهارات</a></li>
           <li><a href="#contact">التواصل</a></li>
         </ul>
       </nav>
 
       <div class="nav-left-group">
-        <button class="theme-toggle-btn" onclick="toggleTheme()">☀️ / 🌙 المظهر</button>
         <img src="qamar-logo.png" alt="Qamar Logo" class="nav-logo">
       </div>
     </div>
@@ -720,45 +668,45 @@
     </div>
   </section>
 
-  <!-- 2. مختارات من أعمالي -->
+  <!-- 2. قسم نبذة عني -->
+  <section id="about" class="about-section-container">
+    <div class="about-card">
+      <img src="صورتييي.jpg" alt="قمر خالد" class="profile-avatar-large">
+      <div class="profile-details">
+        <h2 style="font-size: 2.6rem; font-weight: 900; margin-bottom: 1.5rem; color: #b05e81;">نبذة عني</h2>
+        <p>مرحبًا، أنا قمر خالد، طالبة وسائط إبداعية في السنة الثالثة من برنامج BTEC، مهتمة بالتصميم الجرافيكي وتصوير المنتجات. خلال دراستي على مدار سنتين، اكتسبت خبرة في تنفيذ المشاريع والتعامل مع الأفكار والألوان والعناصر البصرية، وتعلمت كيف أوظفها لإنتاج تصاميم توصل الفكرة بطريقة واضحة وجذابة.</p>
+        <p>أهتم بتصميم الإعلانات والملصقات والهويات البصرية، كما أحب تصوير المنتجات وإظهار تفاصيلها بطريقة مميزة من خلال اختيار الإضاءة والخلفيات والزوايا المناسبة. وأحرص على تطوير مهاراتي من خلال التجربة المستمرة وتنفيذ مشاريع متنوعة، والتعرف على أساليب وأدوات جديدة تساعدني على تحسين جودة أعمالي.</p>
+        <p>أسعى إلى توسيع خبرتي في مجال التصميم الجرافيكي وتصوير المنتجات، وبناء أسلوبي الخاص، وتقديم أعمال تجمع بين الإبداع والوضوح وتلبي احتياجات الفئة المستهدفة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. مختارات من أعمالي -->
   <section id="featured" class="featured-grid-section">
     <h2 class="section-title">مختارات من أعمالي</h2>
     <div class="featured-only-grid">
-      <div class="featured-large-card" onclick="openSingleImage('واقي1.png')">
-        <img src="واقي1.png" alt="SOLÉA">
+      <div class="featured-large-card" onclick="openSingleImage('مختارات من اعمالي لوميا.png')">
+        <img src="مختارات من اعمالي لوميا.png" alt="LUMÉA Billboard">
         <div class="featured-card-title-bottom">
-          <h3>SOLÉA | واقي الشمس</h3>
+          <h3>LUMÉA | غسول الوجه</h3>
         </div>
       </div>
-      <div class="featured-large-card" onclick="openSingleImage('عطر4.png')">
-        <img src="عطر4.png" alt="AYA Perfumes">
-        <div class="featured-card-title-bottom">
-          <h3>AYA | العطور والمسك</h3>
-        </div>
-      </div>
-      <div class="featured-large-card" onclick="openSingleImage('noura-1.png')">
-        <img src="noura-1.png" alt="NOURA">
+      <div class="featured-large-card" onclick="openSingleImage('مخترات من اعمالي نورا.png')">
+        <img src="مخترات من اعمالي نورا.png" alt="NOURA Billboard">
         <div class="featured-card-title-bottom">
           <h3>NOURA | كريم الوجه</h3>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 3. قسم عني -->
-  <section id="about" style="padding: 0 1rem;">
-    <div class="about-card">
-      <img src="صورتييي.jpg" alt="قمر خالد" class="profile-avatar-large">
-      <div class="profile-details">
-        <h2 style="font-size: 2.6rem; font-weight: 900; margin-bottom: 1rem; color: var(--accent-pink);">عني</h2>
-        <p>مرحبا انا قمر خالد طالبة وسائط إبداعية مهتمة بالتصميم الجرافيكي وتصوير المنتجات أحب تجربة الأفكار والألوان وتنسيق العناصر البصرية لإنتاج تصاميم تعبر عن الفكرة بطريقة واضحة وجذابة.</p>
-        <p>كما أهتم بتصوير المنتجات وإظهار تفاصيلها من خلال الإضاءة والخلفيات المناسبة</p>
-        <p>أعمل على تطوير مهاراتي من خلال تنفيذ المشاريع والتجربة المستمرة وأسعى إلى اكتساب خبرات جديدة تساعدني على تطوير أسلوبي في التصميم والتصوير</p>
+      <div class="featured-large-card" onclick="openSingleImage('مختارات من اعمالي اوريل.png')">
+        <img src="مختارات من اعمالي اوريل.png" alt="AUREL Billboard">
+        <div class="featured-card-title-bottom">
+          <h3>AUREL | الساعات الفاخرة</h3>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. معرض الأعمال -->
+  <!-- 4. معرض الأعمال والمشاريع -->
   <section id="works" class="works-grid-section">
     <h2 class="section-title">معرض الأعمال والمشاريع</h2>
     <div class="works-large-grid">
@@ -836,9 +784,9 @@
     </div>
   </section>
 
-  <!-- 5. ماذا أقدم؟ -->
+  <!-- 5. ماذا أقدم -->
   <section id="services">
-    <h2 class="section-title">ماذا أقدّم؟</h2>
+    <h2 class="section-title">ماذا أقدم</h2>
     <div class="services-grid">
       <div class="service-box">
         <h3>تصوير المنتجات الاحترافي</h3>
@@ -878,18 +826,24 @@
     </div>
   </section>
 
-  <!-- 7. التواصل -->
+  <!-- 7. التواصل وأيقونات السوشيال ميديا الدائرية -->
   <section id="contact" class="contact-section">
     <div class="contact-box">
       <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.9rem;">تواصل معي</h2>
       <p style="font-size: 1.2rem; opacity: 0.9;">سعيد جداً بتلقي استفساراتكم وملاحظاتكم وعروض العمل عبر القنوات التالية:</p>
-      <div class="contact-buttons-group">
-        <a href="https://wa.me/962782796712" target="_blank" class="whatsapp-btn-pink">
-          <span>💬 الواتساب</span>
-          <span style="font-size: 1.05rem;">+962 7 8279 6712</span>
+      
+      <div class="social-circles-container">
+        <!-- إنستغرام -->
+        <a href="https://www.instagram.com/qam_ar2009?rpxt=MWczdmFoMjAzODhxNg==" target="_blank" class="social-circle-item" title="Instagram">
+          📷
         </a>
-        <a href="https://www.instagram.com/qam_ar2009?rpxt=MWczdmFoMjAzODhxNg==" target="_blank" class="insta-btn">
-          <span>📷 الإنستغرام</span>
+        <!-- بيهانس -->
+        <a href="https://www.behance.net/qamaral-siuri" target="_blank" class="social-circle-item" title="Behance">
+          Be
+        </a>
+        <!-- واتساب -->
+        <a href="https://wa.me/962782796712" target="_blank" class="social-circle-item" title="WhatsApp">
+          💬
         </a>
       </div>
     </div>
@@ -1109,6 +1063,7 @@
         </div>
       </div>
       <div class="brand-gallery-grid">
+        <!-- تم تعديل امتدادات صور أوريل لتتوافق بدقة مع ملفاتك PNG -->
         <div class="brand-gallery-card" onclick="openLightbox(['ساعهه.png', 'س2.png', 'س3.png', 'س4.png', 'س5.png'], 0)">
           <img src="ساعهه.png" alt="Aurel 1">
         </div>
@@ -1151,6 +1106,7 @@
         </div>
       </div>
       <div class="brand-gallery-grid">
+        <!-- تم تعديل امتدادات صور دارا لتتوافق بدقة مع ملفاتك PNG -->
         <div class="brand-gallery-card" onclick="openLightbox(['خاتم 1.png', 'خاتم 3.png', 'خاتم 4.png', 'خاتم 5.png'], 0)">
           <img src="خاتم 1.png" alt="Dara 1">
         </div>
@@ -1287,30 +1243,6 @@
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
       document.getElementById('lightbox-img').classList.remove('zoomed');
-    }
-
-    function toggleTheme() {
-      const body = document.body;
-      const currentTheme = body.getAttribute('data-theme');
-      if (currentTheme === 'dark') {
-        body.setAttribute('data-theme', 'light');
-      } else {
-        body.setAttribute('data-theme', 'dark');
-      }
-    }
-
-    const cursor = document.querySelector('.custom-cursor');
-    const follower = document.querySelector('.cursor-follower');
-
-    if (cursor && follower) {
-      window.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        follower.animate({
-          left: e.clientX + 'px',
-          top: e.clientY + 'px'
-        }, { duration: 200, fill: "forwards" });
-      });
     }
   </script>
 </body>
